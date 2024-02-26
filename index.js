@@ -1,7 +1,10 @@
 const express = require('express');
+const cors = require("cors")
 
 const app = express();
 const port = 3000;
+
+app.use(cors());
 
 app.get('/:currencyCode/:toCurrencyCode', async (req, res) => {
     const currencyCode = req.params.currencyCode.toUpperCase();
@@ -14,7 +17,7 @@ app.get('/:currencyCode/:toCurrencyCode', async (req, res) => {
         if (apiResponse.ok) {
             const result = await apiResponse.json();
             const data = result.data.rates
-            const element = data.find((element) => element.code === toCurrencyCode);
+            const element = data.find((element) => element.code === toCurrencyCode.toLowerCase());
             if (!element) {
                 res.status(404).json('Currency not found');
             }

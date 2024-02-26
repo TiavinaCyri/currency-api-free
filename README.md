@@ -1,4 +1,2 @@
 ## link
-vo atao
-## usage
-two paramaters : /{currency}/{targetCurrency}
+https://currency-api-free.vercel.app/{currency}/{targetCurrency}
